@@ -1,0 +1,311 @@
+﻿@page "/"
+@layout DashboardLayout
+@inject IJSRuntime JS
+
+<PageTitle>Index</PageTitle>
+
+
+<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-30">
+    <div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+        <li class="breadcrumb-item"><a href="#">Welcome to Dashboard</a></li>
+                
+        </ol>
+    </nav>
+    <h4 class="mg-b-0 tx-spacing--1">HOMEPASS INTELLIGENCE</h4>
+    </div>
+    <div class="d-none d-md-flex">
+    <img src="xl-dash/assets/img/logo.png" width="100%" height="50" alt="">
+    </div>
+</div>
+
+<div class="row row-xs">
+    <div class="col-12">
+    <div class="card card-body">
+        <div class="d-md-flex align-items-center justify-content-between">
+        <div col-3>
+            <h5>City</h5>
+            <select class="custom-select">
+            <option selected>Open this select city</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+        <div col-3>
+            <h5>Sub districts</h5>
+            <select class="custom-select">
+            <option selected>Open this select distric</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+        <div col-3>
+            <h5>Village</h5>
+            <select class="custom-select">
+            <option selected>Open this select village</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+        <div col-3>
+            <h5>Cluster</h5>
+            <select class="custom-select">
+            <option selected>Open this select Cluster</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+                
+        </div>
+    </div>
+    </div><!-- col -->
+    <div class="col-12 mg-t-10">
+    <div class="card">
+        <div class="card-header">
+        <h6 class="mg-b-0">Home Fiber Information</h6>
+        </div><!-- card-header -->
+        <div class="card-body pd-0">
+        <div class="row no-gutters">
+            <div class="col col-sm-6 col-lg">
+            <div class="crypto">
+                <div class="media mg-b-10">
+                <div class="crypto-icon bg-secondary">
+                    <i class="icon ion-md-home"></i>
+                </div><!-- crypto-icon -->
+                <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Home Passed </h6>
+                    <div class="d-flex align-items-baseline tx-rubik">
+                    <h5 class="tx-50 mg-b-0">217</h5>
+                    <p class="mg-b-0 tx-11 tx-danger mg-l-3"><i class="icon ion-md-arrow-down"></i> 0.77%</p>
+                    </div>
+                </div><!-- media-body -->
+                </div><!-- media -->
+            </div><!-- crypto -->
+            </div>
+            <div class="col col-sm-6 col-lg bd-t bd-sm-t-0 bd-sm-l">
+            <div class="crypto">
+                <div class="media mg-b-10">
+                <div class="crypto-icon bg-secondary">
+                    <i class="icon ion-md-magnet"></i>
+                </div><!-- crypto-icon -->
+                <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Connect </h6>
+                    <div class="d-flex align-items-baseline tx-rubik">
+                    <h5 class="tx-50 mg-b-0">25</h5>
+                    <p class="mg-b-0 tx-11 tx-success mg-l-3"><i class="icon ion-md-arrow-up"></i> 4.34%</p>
+                    </div>
+                </div><!-- media-body -->
+                </div><!-- media -->
+          
+                      
+            </div><!-- crypto -->
+            </div>
+            <div class="col col-sm-6 col-lg bd-t bd-lg-t-0 bd-lg-l">
+            <div class="crypto">
+                <div class="media mg-b-10">
+                <div class="crypto-icon bg-litecoin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div><!-- crypto-icon -->
+                <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Penetration rate <span
+                        class="tx-color-03 tx-normal">(%)</span></h6>
+                    <br>
+                    <div class="d-inline-block pos-relative">
+                    <span class="peity-donut"
+                        data-peity='{ "fill": ["#88CB92","#e5e9f2"], "height": 110, "width": 110, "innerRadius": 46 }'>70,30</span>
+                    <div class="pos-absolute a-0 d-flex flex-column align-items-center justify-content-center">
+                        <h3 class="tx-rubik tx-spacing--1 mg-b-0">86%</h3>
+                        <span class="tx-9 tx-semibold tx-sans tx-color-03 tx-uppercase">Reached</span>
+                    </div>
+                    </div>
+                </div><!-- media-body -->
+                </div><!-- media -->
+          
+                    
+                      
+                      
+            </div><!-- crypto -->
+            </div>
+                  
+        </div><!-- row -->
+        <hr>
+        <div class="row no-gutters">
+            <div class="col col-sm-6 col-lg">
+            <div class="crypto">
+                <div class="media mg-b-10">
+                <div class="crypto-icon bg-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                </div><!-- crypto-icon -->
+                <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">FAT Port Availability </h6>
+                    <div class="d-flex align-items-baseline tx-rubik">
+                    <h5 class="tx-50 mg-b-0">5</h5>
+                    <p class="mg-b-0 tx-11 tx-danger mg-l-3"><i class="icon ion-md-arrow-down"></i> 0.77%</p>
+                    </div>
+                </div><!-- media-body -->
+                </div><!-- media -->
+                
+                <select class="custom-select">
+                <option selected>FAT No.02</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                </select>
+                
+                      
+            </div><!-- crypto -->
+            </div>
+            <div class="col col-sm-6 col-lg bd-t bd-sm-t-0 bd-sm-l">
+            <div class="crypto">
+                <div class="media mg-b-10">
+                <div class="crypto-icon bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                </div><!-- crypto-icon -->
+                <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Home-passed Intelegence </h6>
+                    <br>
+                    <br>
+                    <br>
+                </div><!-- media-body -->
+                </div><!-- media -->
+                    
+                <select class="custom-select">
+                <option selected>Lorem ipsum</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                </select>
+                    
+                    
+            </div><!-- crypto -->
+            </div>
+            <div class="col col-sm-6 col-lg bd-t bd-lg-t-0 bd-lg-l">
+            <div class="col col-sm-6 col-lg bd-t bd-sm-t-0 bd-sm-l">
+                <div class="crypto">
+                <div class="media mg-b-10">
+                    <div class="crypto-icon bg-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div><!-- crypto-icon -->
+                    <div class="media-body pd-l-8">
+                    <h6 class="tx-11 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Green Home-passed</h6>
+                    <br>
+                    <br>
+                    <br>
+                    </div><!-- media-body -->
+                </div><!-- media -->
+                    
+                <select class="custom-select">
+                    <option selected>Lorem ipsum</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                    
+                    
+                </div><!-- crypto -->
+            </div>
+            </div>
+                
+        </div>
+                
+        </div><!-- card-body -->
+    </div><!-- card -->
+    </div><!-- col -->
+    <div class="col-lg-12 mg-t-10">
+    <div class="card card-crypto">
+        <div class="card-header pd-y-8 d-sm-flex align-items-center justify-content-between">
+        <h6 class="tx-15 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Maps </h6>
+                
+        </div><!-- card-header -->
+        <div class="card-body pd-0 pd-sm-0">
+        <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=106.7709049768746%2C-6.280932698724556%2C106.79643960669638%2C-6.265127765817809&amp;layer=cyclemap"
+            style="border: 1px solid black"></iframe><br /><small></small>
+        </div><!-- card-body -->
+             
+    </div><!-- card -->
+    </div><!-- col -->
+
+    <div class="col-lg-12 mg-t-10">
+    <div class="card card-crypto">
+        <div class="card-header pd-y-8 d-sm-flex align-items-center justify-content-between">
+        <h6 class="tx-15 tx-spacing-1 tx-uppercase tx-semibold mg-b-5">Cellular Distric Profile </h6>
+        </div>
+        <div class="card-body tx-center">
+        <h4 class="tx-normal tx-rubik tx-40 tx-spacing--1 mg-b-0 tx-danger" >Not Passed</h4>
+        <p class="tx-12 tx-uppercase tx-semibold tx-spacing-1 tx-color-02">5 KPI Status</p>
+               
+            <hr>
+        </div>
+        <div class="card-body tx-center pd-10 pd-sm-20">
+        <div class="row row-sm">
+            <div class="col-4 col-sm-4 col-md">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">RSRP Status</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-success">Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">CQI Status</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-danger">Not Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md mg-t-20 mg-sm-t-0">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">DLE Status</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-success">Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md-3 col-xl mg-t-20 mg-md-t-0">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10"><span class="d-none d-sm-inline">E2E Status
+                </span></h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 text-success">Passed</h5>
+            </div><!-- col -->
+                  
+        </div><!-- row -->
+        <hr>
+        <div class="row row-sm">
+            <div class="col-4 col-sm-4 col-md">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">LCT Status</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-danger">Not Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">FB THP</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-success">Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md mg-t-20 mg-sm-t-0">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10">FB COV</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-danger">Not Passed</h5>
+            </div><!-- col -->
+            <div class="col-4 col-sm-4 col-md-3 col-xl mg-t-20 mg-md-t-0">
+            <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-03 mg-b-10 ">NPS</h6>
+            <h5 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 tx-success">Passed</h5>
+            </div><!-- col -->
+                
+        </div><!-- row -->
+        </div><!-- card-body -->
+        <div class="card-footer pd-20">
+                
+        </div><!-- card-footer -->
+    </div><!-- card -->
+    </div>
+          
+          
+          
+</div><!-- row -->
+</div><!-- container -->
+
+
+@code{
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("callDonutChart");
+        if (firstRender)
+        {
+            //first time
+        }
+    }
+
+
+}

@@ -1,0 +1,250 @@
+﻿@using System.Net;
+@using System.Data;
+@page "/xldata"
+@inject HttpClient Http
+
+<h1>This is XLData Page</h1>
+
+@if (string.IsNullOrEmpty(csvString))
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th>REGION</th>
+                <th>CITY</th>
+                <th>PREFIX_ADDRESS</th>
+                <th>PREFIX_ADDRESS</th>
+                <th>HOUSE_NUMBER</th>
+                <th>DISTRICT</th>
+                <th>SUB_DISTRICT</th>
+                <th>ZIPCODE</th>*@
+                <th>Query Address</th>
+                @*<th>Pinpoint</th>*@
+                <th>Lat</th>
+                <th>Long</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var a in dat)
+            {
+                <tr>
+                    <td>
+                        @(a.AddressQuery)
+                    </td>
+@*
+                    <td>
+                        @($"{a.Lat}, {a.Long}")
+                    </td>*@
+                    
+                    <td>
+                        @(a.Lat)
+                    </td>
+                    <td>
+                        @(a.Long)
+                    </td>
+
+                    @*<td>
+                        @a.Region
+                    </td>
+                    <td>
+                        @a.City
+                    </td>
+                    <td>
+                        @a.PrefixAddress
+                    </td>
+                    <td>
+                        @a.StreetName
+                    </td>
+                    <td>
+                        @a.HouseNumber
+                    </td>
+                    <td>
+                        @a.District
+                    </td>
+                    <td>
+                        @a.SubDistrict
+                    </td>
+                    <td>
+                        @a.ZipCode
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code{
+
+    private IList<XlDataModel>? dat;
+    private string? csvString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            csvString = await Http.GetStringAsync("sample-data/POC_HI_Banjar_Kaja_Kav DKI-3.csv");
+            List<string> csvRows = csvString.Split("\n").ToList();
+
+            dat = new List<XlDataModel>();
+
+            for (int i = 0; i < csvRows.Count; i++)
+            {
+                if (i > 0)
+                {
+                    List<string> csvStringList = csvRows[i].Split(",").ToList();
+
+                    if (csvStringList.Count() < 21)
+                    {
+                        continue;
+                        //throw new Exception("Kolom tidak sesuai di baris ke:" + (i + 1));
+                    }
+
+                    XlDataModel pizza = new XlDataModel()
+                        {
+                            VendorName = csvStringList[0],
+                            Region = csvStringList[1],
+                            City = csvStringList[2],
+                            CityCode = csvStringList[3],
+                            ProjectName = csvStringList[4],
+                            ProjectId = csvStringList[5],
+                            ResidenceName = csvStringList[6],
+                            ClusterName = csvStringList[7],
+                            ClusterCode = csvStringList[8],
+                            PrefixAddress = csvStringList[9],
+                            StreetName = csvStringList[10],
+                            HouseNumber = csvStringList[11],
+                            Block = csvStringList[12],
+                            Floor = csvStringList[13],
+                            Rt = csvStringList[14],
+                            Rw = csvStringList[15],
+                            District = csvStringList[16],
+                            SubDistrict = csvStringList[17],
+                            ZipCode = csvStringList[18],
+                            HomepassStatusAllOperator = csvStringList[19],
+                            SampleResultFixedBroadband = csvStringList[20],
+                            Status = csvStringList[21]
+                        };
+
+                    //from google
+                    try
+                    {
+                        var googleGeoCode = await Http.GetFromJsonAsync<Root>($"https://maps.googleapis.com/maps/api/geocode/json?address={pizza.AddressQuery}&key=AIzaSyBfK7IBADUgpj5SU6fSkA38k4TqzSFWkZ8");
+
+                        if (googleGeoCode != null && googleGeoCode.results.Count() > 0)
+                        {
+                            var addr = googleGeoCode.results.FirstOrDefault();
+                            pizza.Long = addr.geometry.location.lng.ToString();
+                            pizza.Lat = addr.geometry.location.lat.ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string error = ex.ToString();
+                    }
+
+                    dat.Add(pizza);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public class XlDataModel
+    {
+        public string VendorName { get; set; }
+        public string Region { get; set; }
+        public string City { get; set; }
+        public string CityCode { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectId { get; set; }
+        public string ResidenceName { get; set; }
+        public string ClusterName { get; set; }
+        public string ClusterCode { get; set; }
+        public string PrefixAddress { get; set; }
+        public string StreetName { get; set; }
+        public string HouseNumber { get; set; }
+        public string Block { get; set; }
+        public string Floor { get; set; }
+        public string Rt { get; set; }
+        public string Rw { get; set; }
+        public string District { get; set; }
+        public string SubDistrict { get; set; }
+        public string ZipCode { get; set; }
+        public string HomepassStatusAllOperator { get; set; }
+        public string SampleResultFixedBroadband { get; set; }
+        public string Status { get; set; }
+        public string Long { get; set; }
+        public string Lat { get; set; }
+        public string AddressQuery => $"{this.PrefixAddress} {this.StreetName} Blok {this.Block} No. {this.HouseNumber}, RW.{this.Rw}, {this.SubDistrict}, {this.District}, {this.City}, {this.Region}, {this.ZipCode}, Indonesia";
+    }
+
+    //google
+    public class AddressComponent
+    {
+        public string long_name { get; set; }
+        public string short_name { get; set; }
+        public List<string> types { get; set; }
+    }
+
+    public class Northeast
+    {
+        public double lat { get; set; }
+        public double lng { get; set; }
+    }
+
+    public class Southwest
+    {
+        public double lat { get; set; }
+        public double lng { get; set; }
+    }
+
+    public class Bounds
+    {
+        public Northeast northeast { get; set; }
+        public Southwest southwest { get; set; }
+    }
+
+    public class Location
+    {
+        public double lat { get; set; }
+        public double lng { get; set; }
+    }
+
+    public class Viewport
+    {
+        public Northeast northeast { get; set; }
+        public Southwest southwest { get; set; }
+    }
+
+    public class Geometry
+    {
+        public Bounds bounds { get; set; }
+        public Location location { get; set; }
+        public string location_type { get; set; }
+        public Viewport viewport { get; set; }
+    }
+
+    public class Result
+    {
+        public List<AddressComponent> address_components { get; set; }
+        public string formatted_address { get; set; }
+        public Geometry geometry { get; set; }
+        public string place_id { get; set; }
+        public List<string> types { get; set; }
+    }
+
+    public class Root
+    {
+        public List<Result> results { get; set; }
+        public string status { get; set; }
+    }
+
+}
